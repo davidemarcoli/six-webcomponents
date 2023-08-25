@@ -550,6 +550,10 @@ export namespace Components {
          */
         "hoist": boolean;
         /**
+          * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
+         */
+        "matchTriggerWidth": boolean;
+        /**
           * Indicates whether the dropdown is open. You can use this in lieu of the show/hide methods.
          */
         "open": boolean;
@@ -3240,6 +3244,10 @@ declare namespace LocalJSX {
           * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
          */
         "hoist"?: boolean;
+        /**
+          * Determines if the dropdown panel's width should match the width of the trigger element.  If set to `true`, the panel will resize its width to align with the trigger's width. If `false` or omitted, the panel will maintain its default width.
+         */
+        "matchTriggerWidth"?: boolean;
         /**
           * Emitted when the async filter is triggered
          */

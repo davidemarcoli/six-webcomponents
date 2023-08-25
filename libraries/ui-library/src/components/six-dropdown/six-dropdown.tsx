@@ -141,6 +141,14 @@ export class SixDropdown {
    *  are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot. */
   @Prop() virtualScroll = false;
 
+  /**
+   * Determines if the dropdown panel's width should match the width of the trigger element.
+   *
+   * If set to `true`, the panel will resize its width to align with the trigger's width.
+   * If `false` or omitted, the panel will maintain its default width.
+   */
+  @Prop() matchTriggerWidth = false;
+
   get container() {
     return this.containingElement || this.host;
   }
@@ -230,6 +238,10 @@ export class SixDropdown {
       this.setupFiltering(this.handleFilterInputChange);
     } else if (this.asyncFilter) {
       this.setupFiltering(() => this.sixAsyncFilterFired.emit({ filterValue: this.filterInputElement?.value ?? '' }));
+    }
+
+    if (this.matchTriggerWidth && this.trigger != null && this.panel != null) {
+      this.panel.style.minWidth = `${this.trigger.clientWidth}px`;
     }
   }
 
@@ -406,8 +418,8 @@ export class SixDropdown {
   }
 
   /**
-   * Instructs the dropdown menu to reposition. Useful when the position or size of the trigger changes when the menu
-   * is activated.
+   * Instructs the dropdown menu to reposition. Useful when the position
+   * or size of the trigger changes when the menu is activated.
    */
   @Method()
   async reposition() {

@@ -216,7 +216,7 @@ export class SixSelect {
   componentDidLoad() {
     if (this.input == null) return;
     const input = this.input;
-    this.resizeObserver = new ResizeObserver(() => this.resizeMenu());
+    this.resizeObserver = new ResizeObserver(() => this.dropdown?.reposition());
 
     // We need to do an initial sync after the component has rendered, so this will suppress the re-render warning
     requestAnimationFrame(() => this.syncItemsFromValue());
@@ -397,7 +397,7 @@ export class SixSelect {
       return;
     }
 
-    this.resizeMenu();
+    this.dropdown?.reposition();
     this.resizeObserver?.observe(this.host);
     this.isOpen = true;
   };
@@ -429,16 +429,6 @@ export class SixSelect {
       this.sixChange.emit({ value: this.value, isSelected: true });
     }
   };
-
-  private resizeMenu() {
-    if (this.menu == null || this.box == null) return;
-    this.menu.style.minWidth = `${this.box.clientWidth}px`;
-
-    if (this.dropdown) {
-      this.dropdown.reposition();
-    }
-  }
-
   private async syncItemsFromValue() {
     const items = this.getItems();
     const value = this.getValueAsArray();
@@ -551,6 +541,7 @@ export class SixSelect {
           closeOnSelect={!this.multiple}
           containingElement={this.host}
           disableHideOnEnterAndSpace={this.autocomplete}
+          matchTriggerWidth={true}
           class={{
             select: true,
             'select--open': this.isOpen,
