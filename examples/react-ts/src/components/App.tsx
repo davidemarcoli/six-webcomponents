@@ -1,16 +1,23 @@
-import { Suspense, useState } from 'react'
-import './App.css'
-import Header from './components/Header';
-import Home from './components/Home';
-import LeftSidebar from './components/LeftSidebar';
-import RightSidebar from './components/RightSidebar';
-import Users from './components/Users';
-import { useModalState } from './hooks/use-modal-state';
+import React, { Suspense, useState } from 'react';
+// styles
+import './App.css';
+// components
+import Home from './Home';
+import RightSidebar from './RightSidebar';
+import LeftSidebar from './LeftSidebar';
+import Header from './Header';
+// types
 import { SixRootCollapsedPayload } from '@six-group/ui-library/dist/types/components/six-root/six-root';
+// hooks
+import { useModalState } from '../hooks/use-modal-state';
 import { Route, Routes } from 'react-router-dom';
+// modules
+const Users = React.lazy(() => import('./Users'));
+import { defineCustomElements } from '@six-group/ui-library/loader';
 
+defineCustomElements();
 
-function App() {
+const App = () => {
   const leftSidebar = useModalState(true);
   const rightSidebar = useModalState(false);
   const [, setSearch] = useState('');
@@ -39,6 +46,6 @@ function App() {
       </section>
     </six-root>
   );
-}
+};
 
-export default App
+export default App;
