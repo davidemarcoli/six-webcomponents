@@ -625,7 +625,7 @@ export class SixDropdown {
           <slot name="trigger" onSlotchange={this.handleTriggerSlotChange} />
         </span>
 
-        {/* Position the panel with a wrapper since the popover makes use of `translate`. This let's us add transitions
+        {/* Position the panel with a wrapper since the popover makes use of `translate`. This lets us add transitions
         on the panel without interfering with the position. */}
         <div
           ref={(el) => (this.positioner = el)}
@@ -634,17 +634,7 @@ export class SixDropdown {
             dropdown__positioner__filtered: (this.filter || this.asyncFilter) && !this.hoist,
           }}
         >
-          {this.hasFilterEnabled && (
-            <six-input
-              class={{
-                filter: true,
-                'filter--hidden': !this.open,
-              }}
-              aria-hidden={this.open ? 'false' : 'true'}
-              ref={(el) => (this.filterInputElement = el)}
-              placeholder={this.filterPlaceholder}
-            />
-          )}
+          {/* Panel */}
           <div
             ref={(el) => (this.panel = el)}
             part="panel"
@@ -654,10 +644,25 @@ export class SixDropdown {
             aria-labelledby={this.componentId}
             onScroll={this.handleDropdownScroll}
           >
-            <slot />
-            {this.filteredOptions.length > 0 && (
-              <six-menu part="menu" items={this.filteredOptions} virtualScroll={this.virtualScroll}></six-menu>
+            {/* Filter */}
+            {this.hasFilterEnabled && (
+              <six-input
+                class={{
+                  filter: true,
+                  'filter--hidden': !this.open,
+                }}
+                aria-hidden={this.open ? 'false' : 'true'}
+                ref={(el) => (this.filterInputElement = el)}
+                placeholder={this.filterPlaceholder}
+              />
             )}
+            {/* Items */}
+            <div>
+              <slot />
+              {this.filteredOptions.length > 0 && (
+                <six-menu part="menu" items={this.filteredOptions} virtualScroll={this.virtualScroll}></six-menu>
+              )}
+            </div>
           </div>
         </div>
       </div>

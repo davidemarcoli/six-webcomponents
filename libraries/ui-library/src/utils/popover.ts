@@ -96,13 +96,14 @@ export default class Popover {
     }
 
     this.popper = createPopper(this.anchor, this.popover, {
-      placement: this.options.placement,
+      placement: 'auto',
       strategy: this.options.strategy,
       modifiers: [
         {
           name: 'flip',
           options: {
             boundary: 'viewport',
+            allowedAutoPlacements: ['bottom'],
           },
         },
         {
