@@ -98,7 +98,7 @@ export class SixDropdown {
    * Enable this option to prevent the panel from being clipped when the component is placed inside a container with
    * `overflow: auto|scroll`.
    */
-  @Prop() hoist = false;
+  @Prop() hoist = true;
 
   /** The dropdown will close when the user interacts outside of this element (e.g. clicking). */
   @Prop() containingElement?: HTMLElement;
