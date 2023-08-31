@@ -42,8 +42,12 @@
   scrollbar-width: thin;
 }
 
-.filter-hidden {
-  display: none;
+.filter {
+  padding: var(--six-spacing-small);
+
+  &--hidden {
+    visibility: hidden;
+  }
 }
 
 .dropdown__positioner {

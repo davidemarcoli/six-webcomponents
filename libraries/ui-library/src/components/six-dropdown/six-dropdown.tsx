@@ -637,7 +637,8 @@ export class SixDropdown {
           {this.hasFilterEnabled && (
             <six-input
               class={{
-                'filter-hidden': !this.open,
+                filter: true,
+                'filter--hidden': !this.open,
               }}
               aria-hidden={this.open ? 'false' : 'true'}
               ref={(el) => (this.filterInputElement = el)}
