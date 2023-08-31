@@ -38,13 +38,6 @@ export class SixMenuItem {
   /** Set to true to draw the menu item in a disabled state. */
   @Prop({ reflect: true }) disabled = false;
 
-  connectedCallback() {
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-  }
-
   /** Sets focus on the button. */
   @Method()
   async setFocus(options?: FocusOptions) {
@@ -63,21 +56,10 @@ export class SixMenuItem {
     return Promise.resolve(getTextContent(this.defaultSlot));
   }
 
-  private handleBlur() {
-    this.hasFocus = false;
-  }
-
-  private handleFocus() {
-    this.hasFocus = true;
-  }
-
-  private handleMouseEnter() {
-    return this.setFocus();
-  }
-
-  private handleMouseLeave() {
-    return this.removeFocus();
-  }
+  private handleBlur = () => (this.hasFocus = false);
+  private handleFocus = () => (this.hasFocus = true);
+  private handleMouseEnter = () => this.setFocus({ preventScroll: true });
+  private handleMouseLeave = () => this.removeFocus();
 
   render() {
     return (
