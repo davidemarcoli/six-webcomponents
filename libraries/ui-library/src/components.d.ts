@@ -536,7 +536,7 @@ export namespace Components {
         /**
           * The debounce for the filter callbacks.
          */
-        "filterDebounce": number;
+        "filterDebounce"?: number;
         /**
           * The filter's placeholder text.
          */
@@ -1347,7 +1347,7 @@ export namespace Components {
         /**
           * The debounce for the filter callbacks.
          */
-        "filterDebounce": number;
+        "filterDebounce"?: number;
         /**
           * The filter's placeholder text.
          */

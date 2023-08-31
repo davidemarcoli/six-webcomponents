@@ -297,14 +297,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 .select {
   &__menu {
-    max-width: 50vw;
     width: 100%;
-
-    &--filtered {
-      // fixes problem where when filter is enabled the popup has the width of the input field but the menu has the width
-      // of the trigger element and we thus get weird UI glitches when trigger is narrower than filter input field
-      width: 100% !important;
-    }
 
     &--hidden {
       // hide the menu panel if there are no menu items

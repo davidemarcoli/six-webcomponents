@@ -129,7 +129,7 @@ export class SixDropdown {
   }
 
   /** The debounce for the filter callbacks. */
-  @Prop() filterDebounce = DEFAULT_DEBOUNCE_FAST;
+  @Prop({ mutable: true }) filterDebounce?: number;
 
   /** The panel can be opend/closed by pressing the spacebar or the enter key. In some cases you might want to avoid this */
   @Prop() disableHideOnEnterAndSpace = false;
@@ -208,6 +208,14 @@ export class SixDropdown {
   }
 
   connectedCallback() {
+    if (this.filterDebounce == null) {
+      if (this.asyncFilter) {
+        this.filterDebounce = DEFAULT_DEBOUNCE_FAST;
+      } else {
+        this.filterDebounce = 0;
+      }
+    }
+
     if (this.virtualScroll && this.options === null) {
       console.error('Options must be defined when using virtual scrolling');
     }

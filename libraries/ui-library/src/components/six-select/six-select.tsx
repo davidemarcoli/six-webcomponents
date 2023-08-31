@@ -86,7 +86,7 @@ export class SixSelect {
   @Prop() filterPlaceholder?: string;
 
   /** The debounce for the filter callbacks. */
-  @Prop() filterDebounce = DEFAULT_DEBOUNCE_FAST;
+  @Prop() filterDebounce?: number;
 
   /** The select's size. */
   @Prop() size: 'small' | 'medium' | 'large' = 'medium';
@@ -95,7 +95,7 @@ export class SixSelect {
    * Enable this option to prevent the panel from being clipped when the component is placed inside a container with
    * `overflow: auto|scroll`.
    */
-  @Prop() hoist = false;
+  @Prop() hoist = true;
 
   /** The value of the control. This will be a string or an array depending on `multiple`. */
   @Prop({ mutable: true }) value: string | string[] = '';
