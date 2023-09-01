@@ -89,7 +89,7 @@ export class SixDropdown {
   @Prop() closeOnSelect = true;
 
   /** The distance in pixels from which to offset the panel away from its trigger. */
-  @Prop() distance = 0;
+  @Prop() distance = 2;
 
   /** The distance in pixels from which to offset the panel along its trigger. */
   @Prop() skidding = 0;
@@ -276,6 +276,11 @@ export class SixDropdown {
         await this.filterInputElement?.setFocus();
       }
 
+      if (this.panel != null) {
+        // set explicit width to keep width when filtering the items. Otherwise,
+        // filtering out smaller items would shrink the panel
+        this.panel.style.width = `${this.panel.getBoundingClientRect().width}px`;
+      }
       this.sixAfterShow.emit();
     };
 
@@ -631,7 +636,6 @@ export class SixDropdown {
           ref={(el) => (this.positioner = el)}
           class={{
             dropdown__positioner: true,
-            dropdown__positioner__filtered: (this.filter || this.asyncFilter) && !this.hoist,
           }}
         >
           {/* Panel */}
@@ -654,10 +658,14 @@ export class SixDropdown {
                 aria-hidden={this.open ? 'false' : 'true'}
                 ref={(el) => (this.filterInputElement = el)}
                 placeholder={this.filterPlaceholder}
-              />
+              >
+                <six-icon class="filter__icon" slot="suffix" size="small">
+                  search
+                </six-icon>
+              </six-input>
             )}
             {/* Items */}
-            <div>
+            <div class="panel__items">
               <slot />
               {this.filteredOptions.length > 0 && (
                 <six-menu part="menu" items={this.filteredOptions} virtualScroll={this.virtualScroll}></six-menu>
