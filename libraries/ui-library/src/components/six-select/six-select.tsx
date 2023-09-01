@@ -297,15 +297,14 @@ export class SixSelect {
   }
 
   private handleSelectAll = (event: KeyboardEvent) => {
-    const nonFilteredItems = this.getItems().filter((item) => item.style.display !== 'none');
     const keyName = event.key;
     const keyCode = event.code;
-
     if (keyName === 'Control') {
       return;
     }
 
     if (this.isOpen && this.multiple && keyCode === 'KeyA' && event.ctrlKey) {
+      const nonFilteredItems = this.getItems().filter((item) => item.style.height !== '0');
       event.preventDefault();
       const hasDeselectedOptions = nonFilteredItems.some((opt) => !opt.disabled && !opt.checked);
 

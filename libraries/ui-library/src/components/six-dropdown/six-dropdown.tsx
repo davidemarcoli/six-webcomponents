@@ -248,8 +248,10 @@ export class SixDropdown {
       this.setupFiltering(() => this.sixAsyncFilterFired.emit({ filterValue: this.filterInputElement?.value ?? '' }));
     }
 
+    // set min width of dropdown panel to the width of the trigger element
     if (this.matchTriggerWidth && this.trigger != null && this.panel != null) {
-      this.panel.style.minWidth = `${this.trigger.clientWidth}px`;
+      const width = this.trigger.getBoundingClientRect().width;
+      this.panel.style.minWidth = `${width}px`;
     }
   }
 
@@ -258,12 +260,8 @@ export class SixDropdown {
     const onAfterHide = () => {
       if (this.filter && this.filterInputElement != null) {
         this.filterInputElement.value = '';
-
         if (this.filteredOptions.length > 0) {
           this.filteredOptions = [...this.options];
-        } else {
-          const menuItems = this.getMenuItems();
-          menuItems.forEach((item) => (item.style.display = 'unset'));
         }
       }
 
@@ -274,12 +272,6 @@ export class SixDropdown {
       if (this.hasFilterEnabled && this.autofocusFilter) {
         // if dropdown filter is enabled we should autofocus the search field
         await this.filterInputElement?.setFocus();
-      }
-
-      if (this.panel != null) {
-        // set explicit width to keep width when filtering the items. Otherwise,
-        // filtering out smaller items would shrink the panel
-        this.panel.style.width = `${this.panel.getBoundingClientRect().width}px`;
       }
       this.sixAfterShow.emit();
     };
@@ -355,7 +347,13 @@ export class SixDropdown {
         menuItem?.value?.toLowerCase()?.includes(lowerCaseFilterTerm) ||
         (await menuItem?.getTextLabel())?.toLowerCase()?.includes(lowerCaseFilterTerm);
 
-      menuItem.style.display = elementContainsFilterTerm ? 'unset' : 'none';
+      if (elementContainsFilterTerm) {
+        menuItem.style.removeProperty('overflow');
+        menuItem.style.removeProperty('height');
+      } else {
+        menuItem.style.overflow = 'hidden';
+        menuItem.style.height = '0';
+      }
     });
   }
 
@@ -373,6 +371,14 @@ export class SixDropdown {
     // Prevent subsequent calls to the method, whether manually or triggered by the `open` watcher
     if (this.isVisible || this.popover == null || this.panel == null) {
       return;
+    }
+
+    if (this.filter && this.filterInputElement != null) {
+      const menuItems = this.getMenuItems();
+      menuItems.forEach((item) => {
+        item.style.removeProperty('height');
+        item.style.removeProperty('overflow');
+      });
     }
 
     const sixShow = this.sixShow.emit();
