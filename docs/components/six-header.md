@@ -319,6 +319,7 @@ graph TD;
   six-icon-button --> six-icon
   six-dropdown --> six-menu-item
   six-dropdown --> six-input
+  six-dropdown --> six-icon
   six-dropdown --> six-menu
   six-menu-item --> six-icon
   six-input --> six-icon

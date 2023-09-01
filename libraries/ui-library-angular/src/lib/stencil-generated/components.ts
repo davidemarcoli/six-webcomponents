@@ -399,7 +399,7 @@ allow you to set it on a different element in the drawer, such as an input or bu
 
 
 @ProxyCmp({
-  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
   methods: ['show', 'hide', 'reposition']
 })
 @Component({
@@ -407,7 +407,7 @@ allow you to set it on a different element in the drawer, such as an input or bu
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
+  inputs: ['asyncFilter', 'autofocusFilter', 'closeOnSelect', 'containingElement', 'disableHideOnEnterAndSpace', 'distance', 'filter', 'filterDebounce', 'filterPlaceholder', 'hoist', 'matchTriggerWidth', 'open', 'options', 'placement', 'skidding', 'virtualScroll'],
 })
 export class SixDropdown {
   protected el: HTMLElement;
