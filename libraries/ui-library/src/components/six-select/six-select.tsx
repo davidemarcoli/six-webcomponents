@@ -433,7 +433,10 @@ export class SixSelect {
     const value = this.getValueAsArray();
 
     // Sync checked states
-    items.forEach((item) => (item.checked = value.includes(item.value)));
+    items.forEach((item) => {
+      item.checkbox = this.multiple;
+      item.checked = value.includes(item.value);
+    });
 
     // Sync display label
     if (this.multiple) {

@@ -269,10 +269,6 @@ export class SixDropdown {
     };
 
     const onAfterShow = async () => {
-      if (this.hasFilterEnabled && this.autofocusFilter) {
-        // if dropdown filter is enabled we should autofocus the search field
-        await this.filterInputElement?.setFocus();
-      }
       this.sixAfterShow.emit();
     };
 
@@ -373,13 +369,16 @@ export class SixDropdown {
       return;
     }
 
-    if (this.filter && this.filterInputElement != null) {
-      const menuItems = this.getMenuItems();
-      menuItems.forEach((item) => {
-        item.style.removeProperty('height');
-        item.style.removeProperty('overflow');
-      });
-    }
+    // Make sure all menu item are visible, as some might have been filtered before.
+    const menuItems = this.getMenuItems();
+    menuItems.forEach((item) => {
+      item.style.removeProperty('height');
+      item.style.removeProperty('overflow');
+      item.classList.remove('menu__item__group--checked');
+      if (item.checked) {
+        item.classList.add('menu__item__group--checked');
+      }
+    });
 
     const sixShow = this.sixShow.emit();
     if (sixShow.defaultPrevented) {
@@ -394,6 +393,11 @@ export class SixDropdown {
     this.isVisible = true;
     this.open = true;
     this.popover.show();
+
+    // focus filter if enabled
+    if (this.hasFilterEnabled && this.autofocusFilter) {
+      this.filterInputElement?.setFocus();
+    }
   }
 
   /** Hides the dropdown panel */
@@ -457,6 +461,7 @@ export class SixDropdown {
       return;
     }
 
+    // Focus first element if arrow-down is pressed in filter element
     if (this.filterInputElement === this.host.shadowRoot?.activeElement) {
       if (keyboardEvent.key === 'ArrowDown') {
         const item = this.getMenuItems().find((item) => item.style.display !== 'none');
@@ -550,8 +555,12 @@ export class SixDropdown {
         return;
       }
       const menuItems = [...menu.querySelectorAll('six-menu-item')];
-      const firstMenuItem = menuItems.at(0);
-      const lastMenuItem = menuItems.at(menuItems.length - 1);
+      menuItems.forEach((item) => {
+        console.log(item.style.order);
+      });
+      const firstMenuItem = menuItems.find((item) => item.style.order === '1');
+      console.log(firstMenuItem);
+      const lastMenuItem = menuItems.find((item) => item.style.order === `${menuItems.length - 1}`);
 
       // Focus on a menu item
       if (event.key === 'ArrowDown' && firstMenuItem != null) {
@@ -659,7 +668,6 @@ export class SixDropdown {
               <six-input
                 class={{
                   filter: true,
-                  'filter--hidden': !this.open,
                 }}
                 aria-hidden={this.open ? 'false' : 'true'}
                 ref={(el) => (this.filterInputElement = el)}

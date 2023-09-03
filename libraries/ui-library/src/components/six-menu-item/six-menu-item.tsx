@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State } from '@stencil/core';
 import { getTextContent } from '../../utils/slot';
 
 /**
@@ -27,10 +27,15 @@ export class SixMenuItem {
   private menuItem?: HTMLElement;
   private defaultSlot?: HTMLSlotElement;
 
+  @Element() host!: HTMLSixMenuItemElement;
+
   @State() hasFocus = false;
 
   /** Set to true to draw the item in a checked state. */
   @Prop({ reflect: true }) checked = false;
+
+  /** Set to true to draw item as checkbox  */
+  @Prop() checkbox = false;
 
   /** A unique value to store in the menu item. This can be used as a way to identify menu items when selected. */
   @Prop({ reflect: true }) value = '';
@@ -59,6 +64,9 @@ export class SixMenuItem {
   private handleBlur = () => (this.hasFocus = false);
   private handleFocus = () => (this.hasFocus = true);
   private handleMouseEnter = () => this.setFocus({ preventScroll: true });
+  private handleCheckboxChange = () => {
+    this.host.dispatchEvent(new Event('click', { bubbles: true, cancelable: true }));
+  };
   private handleMouseLeave = () => this.removeFocus();
 
   render() {
@@ -81,6 +89,16 @@ export class SixMenuItem {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
+        {this.checkbox && (
+          <span class="menu-item__checkbox">
+            <six-checkbox
+              onSix-checkbox-change={this.handleCheckboxChange}
+              disabled={this.disabled}
+              checked={this.checked}
+            ></six-checkbox>
+          </span>
+        )}
+
         <span part="prefix" class="menu-item__prefix">
           <slot name="prefix" />
         </span>
@@ -93,11 +111,13 @@ export class SixMenuItem {
           <slot name="suffix" />
         </span>
 
-        <span part="checked-icon" class="menu-item__check">
-          <six-icon size="small" aria-hidden="true">
-            check
-          </six-icon>
-        </span>
+        {!this.checkbox && (
+          <span part="checked-icon" class="menu-item__check">
+            <six-icon size="small" aria-hidden="true">
+              check
+            </six-icon>
+          </span>
+        )}
       </div>
     );
   }

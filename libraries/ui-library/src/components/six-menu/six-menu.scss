@@ -23,3 +23,16 @@
     }
   }
 }
+
+.menu__items {
+  display: flex;
+  flex-direction: column;
+}
+
+::slotted(six-menu-item.menu__item__group--checked) {
+  order: 1;
+}
+
+::slotted(six-menu-item) {
+  order: 2;
+}

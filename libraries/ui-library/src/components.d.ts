@@ -1081,6 +1081,10 @@ export namespace Components {
      */
     interface SixMenuItem {
         /**
+          * Set to true to draw item as checkbox
+         */
+        "checkbox": boolean;
+        /**
           * Set to true to draw the item in a checked state.
          */
         "checked": boolean;
@@ -3839,6 +3843,10 @@ declare namespace LocalJSX {
      * Forked from https://github.com/shoelace-style/shoelace version v2.0.0-beta27.
      */
     interface SixMenuItem {
+        /**
+          * Set to true to draw item as checkbox
+         */
+        "checkbox"?: boolean;
         /**
           * Set to true to draw the item in a checked state.
          */

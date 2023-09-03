@@ -34,10 +34,12 @@
 }
 
 .panel__items {
-  max-height: 50vh;
+  max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior: none;
+  display: flex;
+  flex-direction: column;
 
   // fix for firefox scrollbar
   scrollbar-width: thin;
@@ -47,9 +49,6 @@
   padding: var(--six-spacing-small);
   border-bottom: 1px solid var(--six-color-web-rock-400);
 
-  &--hidden {
-    visibility: hidden;
-  }
   &__icon {
     color: var(--six-color-web-rock-600);
   }

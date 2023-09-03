@@ -91,11 +91,6 @@ export class SixMenu {
   @State()
   sixMenuItemHeight = DEFAULT_SIX_MENU_ITEM_HEIGHT;
 
-  connectedCallback() {
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-  }
-
   componentWillLoad() {
     if (this.items === null) {
       return;
@@ -200,15 +195,15 @@ export class SixMenu {
     item?.setFocus();
   }
 
-  private handleClick(event: MouseEvent) {
+  private handleClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     const clickedItem = target.closest('six-menu-item');
     if (clickedItem && !clickedItem.disabled) {
       this.sixMenuItemSelected.emit({ name: clickedItem.value, item: clickedItem });
     }
-  }
+  };
 
-  private handleKeyDown(event: KeyboardEvent) {
+  private handleKeyDown = (event: KeyboardEvent) => {
     // Make a selection when pressing enter
     if (event.key === 'Enter') {
       const activeItem = this.getActiveItem();
@@ -253,7 +248,7 @@ export class SixMenu {
     }
 
     void this.typeToSelect(event.key);
-  }
+  };
 
   private getMenuWrapperStyle() {
     const styles: Partial<StyleDeclaration> = {};
@@ -319,6 +314,7 @@ export class SixMenu {
       >
         <div
           ref={(el) => (this.menu = el)}
+          class="menu__items"
           part="base"
           role="menu"
           onClick={this.handleClick}

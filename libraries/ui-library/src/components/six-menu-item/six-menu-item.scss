@@ -38,7 +38,8 @@
     align-self: center;
   }
 
-  .menu-item__prefix {
+  .menu-item__prefix,
+  .menu-item__checkbox {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
@@ -46,6 +47,10 @@
     ::slotted(:last-child) {
       margin-right: 0.5em;
     }
+  }
+
+  .menu-item__checkbox {
+    margin-right: var(--six-spacing-x-small);
   }
 
   .menu-item__suffix {
@@ -66,8 +71,11 @@
     visibility: hidden;
     font-size: inherit;
   }
+
+  order: 2;
 }
 
 .menu-item--checked .menu-item__check {
   visibility: visible;
+  order: 1;
 }

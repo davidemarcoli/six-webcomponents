@@ -103,7 +103,7 @@ export default class Popover {
           name: 'flip',
           options: {
             boundary: 'viewport',
-            allowedAutoPlacements: ['top', 'bottom'],
+            allowedAutoPlacements: ['bottom'], // TODO: configurable
           },
         },
         {
