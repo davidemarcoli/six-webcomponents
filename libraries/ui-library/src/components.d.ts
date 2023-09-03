@@ -1337,6 +1337,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Determines the display style of the selected options when in multi-select mode. If `multiple` is `true` and `displayAsTags` is `false`, the multi-selected options will be displayed as plain text instead of tags. This property has no effect if `multiple` is `false`.  Default to `true`.
+         */
+        "displayAsTags": boolean;
+        /**
           * The error message shown, if `invalid` is set to true.
          */
         "errorText": string | string[];
@@ -4103,6 +4107,10 @@ declare namespace LocalJSX {
           * Set to true to disable the select control.
          */
         "disabled"?: boolean;
+        /**
+          * Determines the display style of the selected options when in multi-select mode. If `multiple` is `true` and `displayAsTags` is `false`, the multi-selected options will be displayed as plain text instead of tags. This property has no effect if `multiple` is `false`.  Default to `true`.
+         */
+        "displayAsTags"?: boolean;
         /**
           * The error message shown, if `invalid` is set to true.
          */

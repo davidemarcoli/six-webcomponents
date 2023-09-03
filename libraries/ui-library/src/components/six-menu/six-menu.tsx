@@ -198,7 +198,7 @@ export class SixMenu {
   private handleClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     const clickedItem = target.closest('six-menu-item');
-    if (clickedItem && !clickedItem.disabled) {
+    if (clickedItem && !clickedItem.disabled && target.tagName.toLowerCase() !== 'six-button') {
       this.sixMenuItemSelected.emit({ name: clickedItem.value, item: clickedItem });
     }
   };

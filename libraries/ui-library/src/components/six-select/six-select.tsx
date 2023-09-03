@@ -73,8 +73,19 @@ export class SixSelect {
    */
   @Prop() maxTagsVisible = 3;
 
+  /**
+   * Determines the display style of the selected options when in multi-select
+   * mode. If `multiple` is `true` and `displayAsTags` is `false`,
+   * the multi-selected options will be displayed as plain text instead of tags.
+   * This property has no effect if `multiple` is `false`.
+   *
+   * Default to `true`.
+   */
+  @Prop() displayAsTags = true;
+
   /** Set to true to disable the select control. */
-  @Prop() disabled = false;
+  @Prop()
+  disabled = false;
 
   /** The select's name. */
   @Prop() name = '';
@@ -439,7 +450,7 @@ export class SixSelect {
     });
 
     // Sync display label
-    if (this.multiple) {
+    if (this.multiple && this.displayAsTags) {
       const checkedItems: HTMLSixMenuItemElement[] = [];
       value.forEach((val) => items.map((item) => (item.value === val ? checkedItems.push(item) : null)));
 
@@ -476,6 +487,9 @@ export class SixSelect {
           </six-tag>
         );
       }
+    } else if (this.multiple && !this.displayAsTags) {
+      this.displayLabel = this.extractLabelForSelectedItems(value, items);
+      this.displayTags = [];
     } else {
       this.displayLabel = this.extractLabelForSelectedItem(value, items);
       this.displayTags = [];
@@ -501,6 +515,22 @@ export class SixSelect {
 
     const checkedItem = items.find((item) => item.value === value[0]);
     return checkedItem ? this.getItemLabel(checkedItem) : '';
+  }
+
+  private extractLabelForSelectedItems(value: string[], items: HTMLSixMenuItemElement[]): string {
+    if (value.length === 0 || (value.length === 1 && value[0] === '')) {
+      return '';
+    }
+
+    if (this.options !== null) {
+      const selectedOptions = this.options.filter((item) => value.includes(item.value));
+      return selectedOptions.join(', ');
+    }
+
+    return items
+      .filter((item) => value.includes(item.value))
+      .map((checkedItem) => this.getItemLabel(checkedItem))
+      .join(', ');
   }
 
   private syncValueFromItems() {
@@ -552,7 +582,7 @@ export class SixSelect {
             'select--clearable': this.clearable,
             'select--disabled': this.disabled,
             'select--multiple': this.multiple,
-            'select--has-tags': this.multiple && hasSelection,
+            'select--has-tags': this.multiple && hasSelection && this.displayAsTags,
             'select--placeholder-visible': this.displayLabel === '',
             'select--small': this.size === 'small',
             'select--medium': this.size === 'medium',
