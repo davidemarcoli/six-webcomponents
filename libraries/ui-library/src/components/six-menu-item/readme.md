@@ -9,6 +9,7 @@
 
 | Property   | Attribute  | Description                                                                                               | Type      | Default |
 | ---------- | ---------- | --------------------------------------------------------------------------------------------------------- | --------- | ------- |
+| `checkbox` | `checkbox` | Set to true to draw item as checkbox                                                                      | `boolean` | `false` |
 | `checked`  | `checked`  | Set to true to draw the item in a checked state.                                                          | `boolean` | `false` |
 | `disabled` | `disabled` | Set to true to draw the menu item in a disabled state.                                                    | `boolean` | `false` |
 | `value`    | `value`    | A unique value to store in the menu item. This can be used as a way to identify menu items when selected. | `string`  | `''`    |
@@ -77,12 +78,15 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [six-checkbox](../six-checkbox)
 - [six-icon](../six-icon)
 
 ### Graph
 ```mermaid
 graph TD;
+  six-menu-item --> six-checkbox
   six-menu-item --> six-icon
+  six-checkbox --> six-error
   six-dropdown --> six-menu-item
   six-menu --> six-menu-item
   six-select --> six-menu-item

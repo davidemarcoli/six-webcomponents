@@ -181,7 +181,9 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   six-menu --> six-menu-item
+  six-menu-item --> six-checkbox
   six-menu-item --> six-icon
+  six-checkbox --> six-error
   six-dropdown --> six-menu
   six-select --> six-menu
   style six-menu fill:#f9f,stroke:#333,stroke-width:4px

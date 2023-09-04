@@ -74,6 +74,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [six-menu-item](../six-menu-item)
+
 ### Depends on
 
 - [six-error](../six-error)
@@ -82,6 +86,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   six-checkbox --> six-error
+  six-menu-item --> six-checkbox
   style six-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

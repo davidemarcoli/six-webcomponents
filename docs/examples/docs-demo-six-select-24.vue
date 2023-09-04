@@ -1,7 +1,8 @@
 <template>
 <div>
 
-        <six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
+        <six-select id="six-select-virtual-scroll" virtual-scroll></six-select>
+        
       
 </div>
 </template>
@@ -11,6 +12,12 @@
 <script>
 export default {
   name: 'docs-demo-six-select-24',
-  mounted() {  }
+  mounted() { 
+          const sixSelectDynamicOptions = document.getElementById('six-select-virtual-scroll');
+          sixSelectDynamicOptions.options = Array.from(Array(100000).keys()).map((idx) => ({
+            label: `label ${idx}`,
+            value: `value ${idx}`,
+          }));
+         }
 }
 </script>

@@ -166,11 +166,58 @@ To allow multiple options to be selected, use the `multiple` attribute. It's a g
 ```
 
 
+### Multiple 2
+
+To allow multiple options to be selected, use the `multiple` attribute. It's a good practice to use clearable when this option is enabled. When using this option, value will be an array instead of a string.
+
+<docs-demo-six-select-10></docs-demo-six-select-10>
+
+```html
+<six-select placeholder="Select a few" multiple clearable>
+  <six-menu-item value="option-1"
+    >Option 1
+    <six-button type="link" target="_blank" href="https://www.six-group.com/" slot="suffix">
+      <six-icon>info</six-icon></six-button></six-menu-item>
+  <six-menu-item value="option-2">Option 2</six-menu-item>
+  <six-menu-item value="option-3">Option 3</six-menu-item>
+  <six-menu-divider></six-menu-divider>
+  <six-menu-item value="option-4">Option 4</six-menu-item>
+  <six-menu-item value="option-5">Option 5</six-menu-item>
+  <six-menu-item value="option-6">Option 6 (with tooltip due to long text)</six-menu-item>
+  <six-menu-item value="option-7">Option 7 (with tooltip due to long text)</six-menu-item>
+  <six-menu-item value="option-8">Option 8 (with tooltip due to long text)</six-menu-item>
+  <six-menu-item value="option-9">Option 9 (with tooltip due to long text)</six-menu-item>
+</six-select>
+```
+
+
+### Multiple 3
+
+To allow multiple options to be selected, use the `multiple` attribute. It's a good practice to use clearable when this option is enabled. When using this option, value will be an array instead of a string.
+
+<docs-demo-six-select-11></docs-demo-six-select-11>
+
+```html
+<six-select placeholder="Select a few" multiple display-as-tags="false" clearable>
+  <six-menu-item value="option-1">Option 1</six-menu-item>
+  <six-menu-item value="option-2">Option 2</six-menu-item>
+  <six-menu-item value="option-3">Option 3</six-menu-item>
+  <six-menu-divider></six-menu-divider>
+  <six-menu-item value="option-4">Option 4</six-menu-item>
+  <six-menu-item value="option-5">Option 5</six-menu-item>
+  <six-menu-item value="option-6">Option 6 (with tooltip due to long text)</six-menu-item>
+  <six-menu-item value="option-7">Option 7 (with tooltip due to long text)</six-menu-item>
+  <six-menu-item value="option-8">Option 8 (with tooltip due to long text)</six-menu-item>
+  <six-menu-item value="option-9">Option 9 (with tooltip due to long text)</six-menu-item>
+</six-select>
+```
+
+
 ### Grouping Options
 
 Options can be grouped visually using menu labels and menu dividers.
 
-<docs-demo-six-select-10></docs-demo-six-select-10>
+<docs-demo-six-select-12></docs-demo-six-select-12>
 
 ```html
 <six-select placeholder="Select one">
@@ -191,7 +238,7 @@ Options can be grouped visually using menu labels and menu dividers.
 
 Use the `size` attribute to change a select's size.
 
-<docs-demo-six-select-11></docs-demo-six-select-11>
+<docs-demo-six-select-13></docs-demo-six-select-13>
 
 ```html
 <six-select placeholder="Small" size="small" multiple>
@@ -222,7 +269,7 @@ Use the `size` attribute to change a select's size.
 
 The `value` prop is bound to the current selection. As the selection changes, so will the value. To programmatically manage the selection, update the value property.
 
-<docs-demo-six-select-12></docs-demo-six-select-12>
+<docs-demo-six-select-14></docs-demo-six-select-14>
 
 ```html
 <div class="selecting-example">
@@ -258,7 +305,7 @@ The `value` prop is bound to the current selection. As the selection changes, so
 
 Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
 
-<docs-demo-six-select-13></docs-demo-six-select-13>
+<docs-demo-six-select-15></docs-demo-six-select-15>
 
 ```html
 <six-select label="Select one">
@@ -273,7 +320,7 @@ Use the `label` attribute to give the select an accessible label. For labels tha
 
 Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
 
-<docs-demo-six-select-14></docs-demo-six-select-14>
+<docs-demo-six-select-16></docs-demo-six-select-16>
 
 ```html
 <six-select label="Experience" help-text="Please tell us your skill level.">
@@ -288,7 +335,7 @@ Add descriptive help text to a select with the `help-text` attribute. For help t
 
 Dropdown panels will be clipped if they're inside a container that has overflow: auto|hidden. The hoist attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container. In this case, the panel will be positioned relative to its containing block, which is usually the viewport unless an ancestor uses a transform, perspective, or filter.
 
-<docs-demo-six-select-15></docs-demo-six-select-15>
+<docs-demo-six-select-17></docs-demo-six-select-17>
 
 ```html
 <div style="overflow: hidden; border: solid 1px grey; padding: 0.5em; display: flex">
@@ -311,7 +358,7 @@ Dropdown panels will be clipped if they're inside a container that has overflow:
 
 There was a bug where hoisting inside drawers caused a problem
 
-<docs-demo-six-select-16></docs-demo-six-select-16>
+<docs-demo-six-select-18></docs-demo-six-select-18>
 
 ```html
 <six-button id="hoistingDrawerBtn">Open Drawer</six-button>
@@ -374,7 +421,7 @@ You can filter the items shown by simply adding `filter="true"` to six-select
 
 You can also pass a custom placeholder with `filter-placeholder` to be shown in the filter input field (will be 'Filter...' by default)
 
-<docs-demo-six-select-17></docs-demo-six-select-17>
+<docs-demo-six-select-19></docs-demo-six-select-19>
 
 ```html
 <six-select label="Experience" filter multiple clearable>
@@ -400,7 +447,7 @@ In such a scenario simply add the `async-filter` attribute to your dropdown comp
 
 If you want to change the default debounce timeout use e.g. `filter-debounce="500"`
 
-<docs-demo-six-select-18></docs-demo-six-select-18>
+<docs-demo-six-select-20></docs-demo-six-select-20>
 
 ```html
 <six-select id="async-select" async-filter filter-placeholder="Search">
@@ -444,7 +491,7 @@ If you want to change the default debounce timeout use e.g. `filter-debounce="50
 
 If you have huge amounts of data you want to present in the dropdown you can't render all at once or it will crash your browser. For these usescases listen to the scroll event to decide which data to present.
 
-<docs-demo-six-select-19></docs-demo-six-select-19>
+<docs-demo-six-select-21></docs-demo-six-select-21>
 
 ```html
 <six-select id="infinite-scoll-dropdown">
@@ -490,7 +537,7 @@ Autocomplete does currently not support multiselect!
 
 You can adjust the debounce timeout via the `input-debounce` attribute
 
-<docs-demo-six-select-20></docs-demo-six-select-20>
+<docs-demo-six-select-22></docs-demo-six-select-22>
 
 ```html
 <six-select id="autocomplete-example" autocomplete clearable></six-select>
@@ -534,7 +581,7 @@ You can adjust the debounce timeout via the `input-debounce` attribute
 
 If you don't want to create a `six-menu-item` but simply want to pass an array with all options, you can do so via the `options` attribute.
 
-<docs-demo-six-select-21></docs-demo-six-select-21>
+<docs-demo-six-select-23></docs-demo-six-select-23>
 
 ```html
 <six-select id="six-select-dynamic-options"></six-select>
@@ -552,7 +599,7 @@ If you don't want to create a `six-menu-item` but simply want to pass an array w
 
 If you have a lot of items in the menu (100'000 in the following example), rendering all of them might lead to some performance issues. To avoid such issues use `virtual-scroll`
 
-<docs-demo-six-select-22></docs-demo-six-select-22>
+<docs-demo-six-select-24></docs-demo-six-select-24>
 
 ```html
 <six-select id="six-select-virtual-scroll" virtual-scroll></six-select>
@@ -570,7 +617,7 @@ If you have a lot of items in the menu (100'000 in the following example), rende
 
 In the following example you see the combination of `autocomplete` with `virtual-scroll`. The list contains 10'000 entries. Enter a number in the input field and you can virtually scroll through all elements which contain this number.
 
-<docs-demo-six-select-23></docs-demo-six-select-23>
+<docs-demo-six-select-25></docs-demo-six-select-25>
 
 ```html
 <six-select id="virtual-autocomplete-example" autocomplete clearable virtual-scroll></six-select>
@@ -619,14 +666,14 @@ warning There are two caveats when using the `error-text` prop/slot:
 
 The `error-text` prop accepts either a simple string message, or a list of messages.
 
-<docs-demo-six-select-24></docs-demo-six-select-24>
+<docs-demo-six-select-26></docs-demo-six-select-26>
 
 ```html
 <six-select label="Simple string message" error-text="This is a simple string message" invalid> </six-select>
 ```
 
 
-<docs-demo-six-select-25></docs-demo-six-select-25>
+<docs-demo-six-select-27></docs-demo-six-select-27>
 
 ```html
 <six-select id="multiple-error-text" label="List of string message" invalid></six-select>
@@ -640,7 +687,7 @@ The `error-text` prop accepts either a simple string message, or a list of messa
 
 When using the `error-text` slot, it is recommended to use the `six-error` component to wrap the error message(s). This will provide the correct styling out of the box
 
-<docs-demo-six-select-26></docs-demo-six-select-26>
+<docs-demo-six-select-28></docs-demo-six-select-28>
 
 ```html
 <six-select invalid>
@@ -658,33 +705,34 @@ When using the `error-text` slot, it is recommended to use the `six-error` compo
 
 ## Properties
 
-| Property            | Attribute            | Description                                                                                                                                                                                                                                                           | Type                             | Default                 |
-| ------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ----------------------- |
-| `asyncFilter`       | `async-filter`       | Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself | `boolean`                        | `false`                 |
-| `autocomplete`      | `autocomplete`       | Set to true to turn the six-select into an autocomplete.                                                                                                                                                                                                              | `boolean`                        | `false`                 |
-| `clearable`         | `clearable`          | Set to true to add a clear button when the select is populated.                                                                                                                                                                                                       | `boolean`                        | `false`                 |
-| `disabled`          | `disabled`           | Set to true to disable the select control.                                                                                                                                                                                                                            | `boolean`                        | `false`                 |
-| `errorText`         | `error-text`         | The error message shown, if `invalid` is set to true.                                                                                                                                                                                                                 | `string \| string[]`             | `''`                    |
-| `errorTextCount`    | `error-text-count`   | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                                                                                                                                                                              | `number \| undefined`            | `undefined`             |
-| `filter`            | `filter`             | Set to true to allow filtering for entries in the dropdown                                                                                                                                                                                                            | `boolean`                        | `false`                 |
-| `filterDebounce`    | `filter-debounce`    | The debounce for the filter callbacks.                                                                                                                                                                                                                                | `number \| undefined`            | `undefined`             |
-| `filterPlaceholder` | `filter-placeholder` | The filter's placeholder text.                                                                                                                                                                                                                                        | `string \| undefined`            | `undefined`             |
-| `helpText`          | `help-text`          | The select's help text. Alternatively, you can use the help-text slot.                                                                                                                                                                                                | `string`                         | `''`                    |
-| `hoist`             | `hoist`              | Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto\|scroll`.                                                                                                                             | `boolean`                        | `true`                  |
-| `inputDebounce`     | `input-debounce`     | The debounce for when the input changes for autocompletes should be emitted                                                                                                                                                                                           | `number`                         | `DEFAULT_DEBOUNCE_FAST` |
-| `invalid`           | `invalid`            | If this property is set to true and an error message is provided by `errorText`, the error message is displayed.                                                                                                                                                      | `boolean`                        | `false`                 |
-| `label`             | `label`              | The label text.                                                                                                                                                                                                                                                       | `string`                         | `''`                    |
-| `line`              | `line`               | Set to render as line                                                                                                                                                                                                                                                 | `boolean`                        | `false`                 |
-| `maxTagsVisible`    | `max-tags-visible`   | The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.                                                                        | `number`                         | `3`                     |
-| `multiple`          | `multiple`           | Set to true to enable multiselect.                                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
-| `name`              | `name`               | The select's name.                                                                                                                                                                                                                                                    | `string`                         | `''`                    |
-| `options`           | --                   | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                            | `SixMenuItemData[] \| null`      | `null`                  |
-| `pill`              | `pill`               | Set to true to draw a pill-style select with rounded edges.                                                                                                                                                                                                           | `boolean`                        | `false`                 |
-| `placeholder`       | `placeholder`        | The select's placeholder text.                                                                                                                                                                                                                                        | `string`                         | `''`                    |
-| `required`          | `required`           | Set to true to show an asterisk beneath the label.                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
-| `size`              | `size`               | The select's size.                                                                                                                                                                                                                                                    | `"large" \| "medium" \| "small"` | `'medium'`              |
-| `value`             | `value`              | The value of the control. This will be a string or an array depending on `multiple`.                                                                                                                                                                                  | `string \| string[]`             | `''`                    |
-| `virtualScroll`     | `virtual-scroll`     | Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.                                   | `boolean`                        | `false`                 |
+| Property            | Attribute            | Description                                                                                                                                                                                                                                                                                   | Type                             | Default                 |
+| ------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ----------------------- |
+| `asyncFilter`       | `async-filter`       | Set to true to allow async filtering. When you enter something in the search field the component will only emit an event but not filter any elements itself. You can then simply listen to the 'six-async-filter-fired' event to manage the shown menu-items yourself                         | `boolean`                        | `false`                 |
+| `autocomplete`      | `autocomplete`       | Set to true to turn the six-select into an autocomplete.                                                                                                                                                                                                                                      | `boolean`                        | `false`                 |
+| `clearable`         | `clearable`          | Set to true to add a clear button when the select is populated.                                                                                                                                                                                                                               | `boolean`                        | `false`                 |
+| `disabled`          | `disabled`           | Set to true to disable the select control.                                                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
+| `displayAsTags`     | `display-as-tags`    | Determines the display style of the selected options when in multi-select mode. If `multiple` is `true` and `displayAsTags` is `false`, the multi-selected options will be displayed as plain text instead of tags. This property has no effect if `multiple` is `false`.  Default to `true`. | `boolean`                        | `true`                  |
+| `errorText`         | `error-text`         | The error message shown, if `invalid` is set to true.                                                                                                                                                                                                                                         | `string \| string[]`             | `''`                    |
+| `errorTextCount`    | `error-text-count`   | The number of error texts to be shown (if the error-text slot isn't used). Defaults to 1                                                                                                                                                                                                      | `number \| undefined`            | `undefined`             |
+| `filter`            | `filter`             | Set to true to allow filtering for entries in the dropdown                                                                                                                                                                                                                                    | `boolean`                        | `false`                 |
+| `filterDebounce`    | `filter-debounce`    | The debounce for the filter callbacks.                                                                                                                                                                                                                                                        | `number \| undefined`            | `undefined`             |
+| `filterPlaceholder` | `filter-placeholder` | The filter's placeholder text.                                                                                                                                                                                                                                                                | `string \| undefined`            | `undefined`             |
+| `helpText`          | `help-text`          | The select's help text. Alternatively, you can use the help-text slot.                                                                                                                                                                                                                        | `string`                         | `''`                    |
+| `hoist`             | `hoist`              | Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto\|scroll`.                                                                                                                                                     | `boolean`                        | `true`                  |
+| `inputDebounce`     | `input-debounce`     | The debounce for when the input changes for autocompletes should be emitted                                                                                                                                                                                                                   | `number`                         | `DEFAULT_DEBOUNCE_FAST` |
+| `invalid`           | `invalid`            | If this property is set to true and an error message is provided by `errorText`, the error message is displayed.                                                                                                                                                                              | `boolean`                        | `false`                 |
+| `label`             | `label`              | The label text.                                                                                                                                                                                                                                                                               | `string`                         | `''`                    |
+| `line`              | `line`               | Set to render as line                                                                                                                                                                                                                                                                         | `boolean`                        | `false`                 |
+| `maxTagsVisible`    | `max-tags-visible`   | The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.                                                                                                | `number`                         | `3`                     |
+| `multiple`          | `multiple`           | Set to true to enable multiselect.                                                                                                                                                                                                                                                            | `boolean`                        | `false`                 |
+| `name`              | `name`               | The select's name.                                                                                                                                                                                                                                                                            | `string`                         | `''`                    |
+| `options`           | --                   | Set the options to be shown in the dropdown (alternative to setting the elements via html)                                                                                                                                                                                                    | `SixMenuItemData[] \| null`      | `null`                  |
+| `pill`              | `pill`               | Set to true to draw a pill-style select with rounded edges.                                                                                                                                                                                                                                   | `boolean`                        | `false`                 |
+| `placeholder`       | `placeholder`        | The select's placeholder text.                                                                                                                                                                                                                                                                | `string`                         | `''`                    |
+| `required`          | `required`           | Set to true to show an asterisk beneath the label.                                                                                                                                                                                                                                            | `boolean`                        | `false`                 |
+| `size`              | `size`               | The select's size.                                                                                                                                                                                                                                                                            | `"large" \| "medium" \| "small"` | `'medium'`              |
+| `value`             | `value`              | The value of the control. This will be a string or an array depending on `multiple`.                                                                                                                                                                                                          | `string \| string[]`             | `''`                    |
+| `virtualScroll`     | `virtual-scroll`     | Defines whether the menu list will be rendered virtually i.e. only the elements actually shown (and a couple around) are actually rendered in the DOM. If you use virtual scrolling pass the elements via prop instead of via slot.                                                           | `boolean`                        | `false`                 |
 
 
 ## Events
@@ -758,7 +806,9 @@ graph TD;
   six-select --> six-input
   six-select --> six-menu
   six-select --> six-error
+  six-menu-item --> six-checkbox
   six-menu-item --> six-icon
+  six-checkbox --> six-error
   six-tag --> six-tooltip
   six-tag --> six-icon-button
   six-icon-button --> six-icon

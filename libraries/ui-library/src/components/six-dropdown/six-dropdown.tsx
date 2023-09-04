@@ -369,14 +369,18 @@ export class SixDropdown {
       return;
     }
 
-    // Make sure all menu item are visible, as some might have been filtered before.
+    // Make sure all menu item are visible, as some might have been filtered
+    // before.
     const menuItems = this.getMenuItems();
     menuItems.forEach((item) => {
       item.style.removeProperty('height');
       item.style.removeProperty('overflow');
-      item.classList.remove('menu__item__group--checked');
-      if (item.checked) {
-        item.classList.add('menu__item__group--checked');
+
+      if (this.container.attributes.getNamedItem('multiple') != null) {
+        item.classList.remove('menu__item__group--checked');
+        if (item.checked) {
+          item.classList.add('menu__item__group--checked');
+        }
       }
     });
 

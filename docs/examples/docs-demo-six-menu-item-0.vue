@@ -13,6 +13,8 @@
           <six-menu-divider></six-menu-divider>
           <six-menu-item checked>Checked</six-menu-item>
           <six-menu-item disabled>Disabled</six-menu-item>
+          <six-menu-item checkbox>Unchecked</six-menu-item>
+          <six-menu-item checkbox checked disabled>Checked</six-menu-item>
           <six-menu-divider></six-menu-divider>
           <six-menu-item>
             Prefix Icon

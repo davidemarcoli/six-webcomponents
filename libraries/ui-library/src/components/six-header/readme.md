@@ -79,7 +79,9 @@ graph TD;
   six-dropdown --> six-input
   six-dropdown --> six-icon
   six-dropdown --> six-menu
+  six-menu-item --> six-checkbox
   six-menu-item --> six-icon
+  six-checkbox --> six-error
   six-input --> six-icon
   six-input --> six-error
   six-menu --> six-menu-item
