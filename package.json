@@ -29,7 +29,6 @@
   "workspaces": [
     "libraries/ui-library",
     "libraries/ui-library-react",
-    "libraries/ui-library-react-ts",
     "libraries/ui-library-angular",
     "examples/angular",
     "examples/react",
