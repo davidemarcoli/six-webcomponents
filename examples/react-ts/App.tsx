@@ -1,12 +1,11 @@
 import React, { Suspense, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { SixRoot, SixRootCollapsedPayload } from '@six-group/ui-library-react';
-import React from 'react';
+import { SixRoot, SixSpinner, SixRootCollapsedPayload, defineCustomElements } from '@six-group/ui-library-react';
+import { Route, Routes } from 'react-router-dom';
+import { useModalState } from './hooks/use-modal-state';
 
 // components
-import Home from './components/Home';
+import {Home, Header, LeftSidebar, RightSidebar} from './components';
 
 defineCustomElements();
 
@@ -23,12 +22,12 @@ function App() {
   };
 
   return (
-    <six-root onSix-root-collapsed={handleCollapsed}>
+    <SixRoot onSix-root-collapsed={handleCollapsed}>
       <Header toggleMenu={leftSidebar.toggle} toggleSearch={setSearch} toggleNotifications={rightSidebar.toggle} />
       <LeftSidebar visible={leftSidebar.isOpen} />
       <RightSidebar visible={rightSidebar.isOpen} />
       <section slot="main">
-        <Suspense fallback={<six-spinner />}>
+        <Suspense fallback={<SixSpinner />}>
           <Routes>
             <Route
               path="/"
@@ -38,7 +37,7 @@ function App() {
           </Routes>
         </Suspense>
       </section>
-    </six-root>
+    </SixRoot>
   );
 }
 

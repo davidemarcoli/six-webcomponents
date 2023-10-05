@@ -1,4 +1,3 @@
-import React from 'react';
 // types
 import { User } from '../types/user';
 

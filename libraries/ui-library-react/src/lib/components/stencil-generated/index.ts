@@ -61,5 +61,3 @@ export const SixTextarea = /*@__PURE__*/createReactComponent<JSX.SixTextarea, HT
 export const SixTile = /*@__PURE__*/createReactComponent<JSX.SixTile, HTMLSixTileElement>('six-tile');
 export const SixTimepicker = /*@__PURE__*/createReactComponent<JSX.SixTimepicker, HTMLSixTimepickerElement>('six-timepicker');
 export const SixTooltip = /*@__PURE__*/createReactComponent<JSX.SixTooltip, HTMLSixTooltipElement>('six-tooltip');
-
-export { defineCustomElements } from '@six-group/ui-library/loader';

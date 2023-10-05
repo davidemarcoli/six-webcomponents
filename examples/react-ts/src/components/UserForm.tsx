@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 // feature
 import '../types/six-components';

@@ -6,7 +6,6 @@ import LeftSidebar from './components/LeftSidebar';
 import RightSidebar from './components/RightSidebar';
 import Users from './components/Users';
 import { useModalState } from './hooks/use-modal-state';
-import { SixRootCollapsedPayload } from '@six-group/ui-library/dist/types/components/six-root/six-root';
 import { Route, Routes } from 'react-router-dom';
 
 
@@ -16,6 +15,7 @@ function App() {
   const [, setSearch] = useState('');
 
   const handleCollapsed = ({ detail }: CustomEvent<SixRootCollapsedPayload>) => {
+
     if (detail.collapsed === leftSidebar.isOpen) {
       leftSidebar.setIsOpen(!detail.collapsed);
     }

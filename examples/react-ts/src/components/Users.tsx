@@ -1,5 +1,4 @@
-import React from 'react';
-import { SixDialog, SixDrawer } from '@six-group/ui-library-react/dist/components';
+import { SixDialog, SixDrawer } from '@six-group/ui-library-react';
 // types
 import { User } from '../types/user';
 // hooks

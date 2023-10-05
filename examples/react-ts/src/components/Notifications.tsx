@@ -1,4 +1,3 @@
-import React from 'react';
 // feature
 import './Notifications.css';
 
