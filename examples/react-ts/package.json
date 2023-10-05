@@ -11,7 +11,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@six-group/ui-library": "*",
     "@six-group/ui-library-react": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
